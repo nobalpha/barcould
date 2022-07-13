@@ -1,0 +1,363 @@
+<!-- Doing wrong letting the user customize stock data, thus breaking the barcode...  -->
+<html>
+<head> 
+<title> Admin Dashboard </title>
+<link rel="stylesheet" href="https://cdn.materialdesignicons.com/3.6.95/css/materialdesignicons.min.css">
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+<style>
+body {
+  background-color: black;
+  color: white;
+}
+
+h1{
+  font-size: 30px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 15px;
+}
+table{
+  width:100%;
+  table-layout: fixed;
+}
+.tbl-header{
+  background-color: rgba(255,255,255,0.3);
+ }
+.tbl-content{
+  height:300px;
+  overflow-x:auto;
+  margin-top: 0px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+th{
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  color: #fff;
+  text-transform: uppercase;
+}
+td{
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 300;
+  font-size: 12px;
+  color: #fff;
+  border-bottom: solid 1px rgba(255,255,255,0.1);
+}
+
+
+/* demo styles */
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+body{
+  background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+  background: linear-gradient(to right, #25c481, #25b7c4);
+  font-family: 'Roboto', sans-serif;
+}
+section{
+  margin: 50px;
+}
+
+
+/* follow me template */
+.made-with-love {
+  margin-top: 40px;
+  padding: 10px;
+  clear: left;
+  text-align: center;
+  font-size: 10px;
+  font-family: arial;
+  color: #fff;
+}
+.made-with-love i {
+  font-style: normal;
+  color: #F50057;
+  font-size: 14px;
+  position: relative;
+  top: 2px;
+}
+.made-with-love a {
+  color: #fff;
+  text-decoration: none;
+}
+.made-with-love a:hover {
+  text-decoration: underline;
+}
+
+
+/* for custom scrollbar for webkit browser*/
+
+::-webkit-scrollbar {
+    width: 6px;
+} 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+} 
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+}
+
+.btn {
+  display: inline-block;
+  background: none;
+  border: 1px solid #bdbdbd;
+  height: 24px;
+  border-radius: 24px;
+  cursor: pointer;
+}
+.btn:focus {
+  outline: none;
+}
+.btn .mdi {
+  margin-right: 1px;
+  margin-left: 1px;
+}
+
+.btn-delete {
+  font-size: 18px;
+  color: red;
+}
+.btn-delete > .mdi-delete-empty {
+  display: none;
+}
+.btn-delete:hover {
+  background-color: #fff5f5;
+}
+.btn-delete:hover > .mdi-delete-empty {
+  display: block;
+}
+.btn-delete:hover > .mdi-delete {
+  display: none;
+}
+.btn-delete:focus {
+  box-shadow: 0 0 0 4px #ffcccc;
+}
+
+img {
+	display:inline;
+}
+
+.upload {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.upload * {
+	cursor: pointer;
+}
+.upload .file-upload {
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+  border-radius: 100px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 4px solid #FFFFFF;
+  overflow: hidden;
+  background-image: linear-gradient(to bottom, #2590EB 50%, #FFFFFF 50%);
+  background-size: 100% 200%;
+  transition: all 1s;
+  color: #FFFFFF;
+  font-size: 100px;
+}
+
+.upload .file-upload i:before {
+  font-size: 18px;
+  cursor: pointer;
+}
+.upload .file-upload input[type=file] {
+  height: 24px;
+  width: 24px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.upload .file-upload:hover {
+  background-position: 0 -100%;
+  color: #2590EB;
+}
+
+.image img:hover {
+	border: 2px red dashed;
+}
+
+</style>
+</head>
+
+<body>
+<a href="/">Ana Ekran</a>
+
+
+<section>
+  <h1>Stock</h1>
+  <div class="tbl-header">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Image</th>
+          <th>Stock Code</th>
+          <th>Product</th>
+          <th>Model</th>
+          <th>Season</th>
+          <th>Leather</th>
+          <th>Color</th>
+		  <th>Accessories</th>
+          <th>Quantity</th>
+          <th>Printed</th>
+          <th>Last Registered</th>
+          <th>Last Printed</th>
+        </tr>
+      </thead>
+    </table>
+  </div>
+  <div class="tbl-content">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tbody>
+		<% for (let i = 0; i < stock.length; i++) { %>
+        <tr data-id="<%=stock[i]._id%>">
+		  <td><%=i+1%></td>
+			<td>
+				<div>
+					<div class="image" style="display: <%= !stock[i].image ? "none" : "inline-block" %>">
+						<img src="<%=stock[i].image%>" alt="product image" style="width:100%;">
+					<!--<button class="btn btn-delete">
+						<span class="mdi mdi-delete"></span>
+						<span class="mdi mdi-delete-empty"></span>
+					</button>-->
+					</div>
+					<div class="upload" style="display: <%= stock[i].image ? "none" : "inline-block" %>">
+					  <div class="file-upload">
+						<input type="file" accept="image/*"/>
+						<i class="fa fa-arrow-up"></i>
+					  </div>
+					</div>
+				</div>
+			</td>
+		  <td data-attr="code"><p><%=stock[i].code%></p></td>
+		  <td data-attr="product"><p><%=stock[i].product%></p></td>
+		  <td data-attr="model"><p><%=stock[i].model%></p></td>
+		  <td data-attr="season"><p><%=stock[i].season%></p></td>
+		  <td data-attr="leather"><p><%=stock[i].leather%></p></td>
+		  <td data-attr="color"><p><%=stock[i].color%></p></td>
+		  <td data-attr="accessory"><p><%=stock[i].accessory%></p></td>
+		  <td data-attr="quantity"><p><%=stock[i].quantity%></p></td>
+		  <td data-attr="printed"><p><%=stock[i].printed%></p></td>
+		  <td data-attr="last_registered"><p><%=stock[i].last_registered%></p></td>
+		  <% if (!stock[i].last_printed) {%>
+		  <td data-attr="last_printed"><p>Not printed yet...</p></td>
+		  <%} else {%>
+		  <td data-attr="last_printed"><p><%=stock[i].last_printed%></p></td>
+		  <%}%>
+        </tr>
+		<%}%>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<script>
+function scrollResize () {
+  const tableContent = document.getElementsByClassName("tbl-content")[0];
+  const tableContentWidth = tableContent.getBoundingClientRect().width;
+  const tableWidth = tableContent.querySelector("table").getBoundingClientRect().width;
+  const tableHeader = document.getElementsByClassName("tbl-header")[0];
+  
+  const scrollWidth = tableContentWidth - tableWidth;
+  tableHeader.style.paddingRight = scrollWidth;
+}
+
+window.onload = scrollResize;
+window.onresize = scrollResize;
+
+window.onresize();
+
+Array.from(document.querySelectorAll("td[data-attr=quantity] p, td[data-attr=last_printed] p, td[data-attr=last_registered] p")).forEach((p) => {
+	const master = p.closest("tr"); // parent of all!
+	
+	// allow only quantity and dates to be changed!
+	
+	p.addEventListener("dblclick", (e) => {
+		console.log(e.target.parentNode);
+		const input = document.createElement("input");
+		input.value = e.target.textContent;
+		const parent = e.target.parentNode;
+		const attr = parent.getAttribute("data-attr");
+		parent.replaceChild(input, e.target);
+		
+		const inputHandler = (sube) => {
+			const edited = e.target.textContent !== sube.target.value;
+			e.target.textContent = sube.target.value;
+			console.log(attr, sube.target.value);
+			if (edited) sendPost("stock", {field: attr, id: master.getAttribute("data-id"), data:sube.target.value});
+			parent.replaceChild(e.target, sube.target);
+		};
+		input.addEventListener("focusout", inputHandler);
+		//input.addEventListener("keypress", inputHandler);
+	});
+	
+	
+})
+
+Array.from(document.querySelectorAll(".image img")).forEach((img) => {
+	const master = img.closest("tr"); // parent of all!
+	const parent = img.closest("td");
+	const imageDiv = img.closest(".image");
+	const uploadDiv = parent.querySelector(".upload");
+	// const img = imageDiv.querySelector("img");
+	img.addEventListener("click", (e) => {
+		img.src = "";
+		uploadDiv.style.display = "inline-block";
+		imageDiv.style.display = "none";
+		sendPost("stock", {src: "", id: master.getAttribute("data-id")});
+	});
+});
+
+
+Array.from(document.querySelectorAll("input[type=file]")).forEach((input) => {
+	const master = input.closest("tr");
+	const parent = input.closest("td");
+	const uploadDiv = input.closest(".upload");
+	const imageDiv = parent.querySelector(".image");
+	const img = imageDiv.querySelector("img");
+	
+	input.addEventListener("change", (e) => {
+		const file = e.target.files[0];
+		console.log(file);
+		const fileReader = new FileReader();
+		fileReader.addEventListener("load", function(e) {
+			const type = file.type;
+			const base64data = e.target.result;
+			img.src = base64data;
+			console.log(img);
+			uploadDiv.style.display = "none";
+			imageDiv.style.display = "inline-block";
+			sendPost("stock", {src: base64data, id: master.getAttribute("data-id"), type:file.type});
+		});
+		fileReader.readAsDataURL(file);
+	});
+});
+
+const sendPost = (endpoint, data) => {
+	fetch(endpoint, {
+		method: "POST",
+		headers: {"Content-Type": "application/json"},
+		body: JSON.stringify(data)
+	}).then(res => {
+		console.log(res);
+	});
+};
+
+</script>
+</body>
+</html>

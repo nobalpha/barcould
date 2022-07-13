@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "canvas": "^2.9.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "html-docx-js": "^0.3.1",
+    "html-to-docx": "^1.4.0",
+    "jsdom": "^20.0.0",
+    "mammoth": "^1.4.21",
+    "mongodb": "^4.7.0",
+    "officeparser": "^2.3.0",
+    "qr-code-styling": "^1.6.0-rc.1",
+    "qr-code-styling-node": "^1.5.0"
+  },
+  "name": "kbarcode",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js",
+    "debug": "nodemon -w index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

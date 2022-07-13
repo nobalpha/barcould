@@ -1,0 +1,122 @@
+<html>
+	<head>
+		<title> Admin Dashboard </title>
+		
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+            
+
+		<style>
+body {
+  background-color: black;
+  color: white;
+}
+
+
+.printBtn {
+  cursor: pointer;
+  background-image: linear-gradient(135deg, #008aff, #86d472);
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: inline-block;
+  height: 50px;
+  margin-top: 20px;
+  font-size: 1.2em;
+  font-weight: 600;
+  padding: 4px;
+  position: relative;
+  text-decoration: none;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  z-index: 2;
+}
+
+span {
+  margin: 5px;
+}
+
+.printBtn:hover {
+  color: #fff;
+}
+
+.printBtn .printBtnSpan {
+  margin: 0;
+  align-items: center;
+  background: #0e0e10;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  transition: background 0.5s ease;
+  width: 100%;
+}
+
+.printBtn:hover .printBtnSpan {
+  background: transparent;
+}
+
+</style>
+	</head>
+	<body>
+	<a href="/">Ana Ekran</a>
+		<h2>Press</h2>
+		<div class="container">
+		<ul class="collapsible">
+	<% stock.forEach((chunk) => { %>
+		<li>
+		<div class="collapsible-header red darken-4 valign-wrapper">
+		<i class="material-icons">print</i>Chunk by <%=chunk.reduce((n, {quantity}) => n+quantity, 0)%>
+		</div>
+		<div class="collapsible-body red">
+	<%
+		chunk.forEach((data) => {
+	%>
+		<span data-id="<%=data._id%>" data-quantity="<%=data.quantity - data.printed%>"> <%=data.code%> <b>X</b> <%=data.quantity - data.printed%></span> <br>
+		
+	<%		
+		}); %>
+		<span><a class="printBtn"><span class="printBtnSpan">&nbsp;&nbsp;+ &nbsp; Print&nbsp;&nbsp;</span></a></span>
+		</div>
+		</li>
+		<%
+	})
+	%>
+		</ul>
+		</div>
+  
+	
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			var elems = document.querySelectorAll('.collapsible');
+			var instances = M.Collapsible.init(elems, {accordeon: true});
+		});
+		
+		Array.from(document.querySelectorAll(".printBtn")).forEach((button) => {
+			button.addEventListener("click", (e) => {
+				const body = e.target.closest(".collapsible li");
+				const toBePrinted = Array.from(body.querySelectorAll("span[data-id]")).map((el) =>	({id: el.getAttribute("data-id"), quantity: el.getAttribute("data-quantity") }));
+				console.log(toBePrinted);
+				sendPost("/press", toBePrinted);
+				body.remove();
+				
+			});
+		});
+		
+		const sendPost = (endpoint, data) => {
+			fetch(endpoint, {
+				method: "POST",
+				headers: {"Content-Type": "application/json"},
+				body: JSON.stringify(data)
+			}).then(res => {
+				console.log(res);
+			});
+		};
+		
+		
+	</script>
+	</body>
+</html>

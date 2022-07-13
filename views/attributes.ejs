@@ -1,0 +1,222 @@
+<html>
+<head> 
+<title> Admin Dashboard </title>
+<script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+
+<style>
+body {
+  background-color: black;
+  color: white;
+}
+
+ol {
+  list-style-type: none;
+  display: inline-block;
+  vertical-align: top;
+}
+
+li {
+  font-size: 1.5rem;
+}
+
+/*
+li:before {
+  content: "00" counter(li)". ";
+}
+
+li:nth-child(n+11):before {
+  content: "0" counter(li)". ";
+}
+
+li:nth-child(n+101):before {
+  content: counter(li)". ";
+}
+*/
+li:before {
+  content: attr(data-icon);
+  color: red;
+  margin-right: 0.25em;
+}
+
+.addBtn {
+  cursor: pointer;
+  background-image: linear-gradient(135deg, #008aff, #86d472);
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: block;
+  height: 50px;
+  font-size: 1.2em;
+  font-weight: 600;
+  padding: 4px;
+  position: relative;
+  text-decoration: none;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  z-index: 2;
+}
+
+span {
+  margin: 5px;
+}
+
+.addBtn:hover {
+  color: #fff;
+}
+
+.addBtn .addBtnSpan {
+  margin: 0;
+  align-items: center;
+  background: #0e0e10;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  transition: background 0.5s ease;
+  width: 100%;
+}
+
+.addBtn:hover .addBtnSpan {
+  background: transparent;
+}
+
+input {
+  background-image: linear-gradient(135deg, #008aff, #86d472);
+}
+</style>
+</head>
+
+<body>
+
+<a href="/">Ana Ekran</a>
+
+
+<% for (let i = 0; i < attributes.length; i++) {
+%>
+
+<ol class="<%= attributes[i].type === "AI" ? "auto_incremented" : "customized" %>-list" data-format="<%= attributes[i].format %>" data-key="<%= attributes[i].key %>">
+<h2><%= attributes[i].key.toUpperCase()%> <i>"<%=attributes[i].format%>"</i></h2>
+<% for (let j = 0; j < attributes[i].data.length; j++) {%>
+	<li data-icon="<%= attributes[i].data[j].code %>"><%= attributes[i].data[j].name %></li>
+<%}%>
+
+<% if (attributes[i].type === "CS") {%>
+	<input class="code" type="text" style="display:inline-block; width: 10%;">
+<%}%>
+<input class="name" type="text">
+<span><a class="addBtn"><span class="addBtnSpan">&nbsp;&nbsp;+ &nbsp; ADD <%= attributes[i].key.toUpperCase()%> &nbsp;&nbsp;</span></a></span>
+</ol>
+
+<% } %>
+
+<script>
+Array.from(document.querySelectorAll(".customized-list .addBtn")).forEach((btn) => {
+	btn.addEventListener("click", (e) => {
+		e.preventDefault();
+		const ol = e.target.closest("ol");
+		const key = ol.getAttribute("data-key");
+		const format = ol.getAttribute("data-format");
+		const lis = Array.from(ol.querySelectorAll("li"));
+		const code = ol.querySelector(".code");
+		const name = ol.querySelector(".name");
+		
+		if (!code.value || !name.value || code.value.length !== format.length ) return;
+		
+		for (let i = 0; i < lis.length; i++) {
+			if (lis[i].textContent === name.value || lis[i].getAttribute("data-icon") === code.value ) {
+				return;
+			}
+		}
+		
+		const li = document.createElement("li");
+		li.textContent = name.value;
+		li.setAttribute("data-icon", code.value);
+		ol.insertBefore(li, code);
+		
+		const data = {key:key, name:name.value, code:code.value};
+		
+		console.log(data);
+		
+		sendPost("/attributes", data)
+		
+	})
+});
+
+Array.from(document.querySelectorAll(".auto_incremented-list .addBtn")).forEach((btn) => {
+	btn.addEventListener("click", (e) => {
+		e.preventDefault();
+		const ol = e.target.closest("ol");
+		const key = ol.getAttribute("data-key");
+		const lis = Array.from(ol.querySelectorAll("li"));
+		const lastCode = lis[lis.length - 1]?.getAttribute("data-icon") ?? 0;
+		const format = ol.getAttribute("data-format");
+		const currIndex = parseInt(lastCode) + 1;
+		const zeroBuffer = format.length - String(currIndex).length;
+		
+		if (zeroBuffer < 0) return; // need a notif...
+
+		const code = `${"0".repeat(zeroBuffer)}${currIndex}`;
+		const name = ol.querySelector(".name");
+		
+		if (!code || !name.value) return;
+		
+		for (let i = 0; i < lis.length; i++) {
+			if (lis[i].textContent === name.value || lis[i].getAttribute("data-icon") === code ) {
+				return;
+			}
+		}
+		const li = document.createElement("li");
+		li.textContent = name.value;
+		li.setAttribute("data-icon", code);
+		ol.insertBefore(li, name);
+		
+		const data = {key:key, name:name.value, code:code};
+		
+		console.log(data);
+		
+		sendPost("/attributes", data);
+		
+		
+	})
+});
+
+const sendPost = (endpoint, data) => {
+	fetch(endpoint, {
+		method: "POST",
+		headers: {"Content-Type": "application/json"},
+		body: JSON.stringify(data)
+	}).then(res => {
+		console.log(res);
+	});
+};
+
+const generateQRCode = () => {
+
+	const qrCode = new QRCodeStyling({
+        width: 300,
+        height: 300,
+        type: "svg",
+        data: "https://www.facebook.com/",
+        image: "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg",
+        dotsOptions: {
+            color: "#4267b2",
+            type: "rounded"
+        },
+        backgroundOptions: {
+            color: "#e9ebee",
+        },
+        imageOptions: {
+            crossOrigin: "anonymous",
+            margin: 20
+        }
+    });
+
+    // qrCode.append(document.getElementById("canvas"));
+    qrCode.download({ name: "qr", extension: "svg" });
+	
+};
+</script>
+</body>
+
+</html>

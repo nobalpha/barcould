@@ -1,0 +1,106 @@
+<html>
+<head> 
+<title> Admin Dashboard </title>
+<style>
+body {
+  background-color: black;
+  color: white;
+}
+
+#genBtn {
+  cursor: pointer;
+  background-image: linear-gradient(135deg, #008aff, #86d472);
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: #ffffff;
+  display: inline-block;
+  height: 50px;
+  font-size: 1.2em;
+  font-weight: 600;
+  padding: 4px;
+  position: relative;
+  text-decoration: none;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  z-index: 2;
+}
+
+span {
+  margin: 5px;
+}
+
+#genBtn:hover {
+  color: #fff;
+}
+
+#genBtn #genBtnSpan {
+  margin: 0;
+  align-items: center;
+  background: #0e0e10;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  transition: background 0.5s ease;
+  width: 100%;
+}
+
+#genBtn:hover #genBtnSpan {
+  background: transparent;
+}
+
+</style>
+</head>
+<body>
+<a href="/">Ana Ekran</a>
+
+<% for (let i = 0; i < attributes.length; i++) {%>
+	<label for="<%= attributes[i].key %>"><%=attributes[i].key.toUpperCase()%>:</label>
+	<select name="<%= attributes[i].key %>" id="<%= attributes[i].key %>">
+	<% for (let j = 0; j < attributes[i].data.length; j++) {%>
+	  <option value="<%= attributes[i].data[j].code%>"><%=attributes[i].data[j].name%></option>
+	<%}%>
+	</select>
+<% } %>
+<input type="number" id="quantity" name="quantity" min="1" value="1">
+
+
+<span><a id="genBtn"><span id="genBtnSpan">&nbsp;&nbsp;+ &nbsp; Generate&nbsp;&nbsp;</span></a></span>
+
+<script>
+const genBtn = document.getElementById("genBtn");
+const quantityInput = document.getElementById("quantity");
+
+genBtn.addEventListener("click", (e) => {
+	let stockCode = "";
+	let data = {};
+	Array.from(document.querySelectorAll("select")).forEach((sel) => {
+		const selected = sel[sel.selectedIndex];
+		data[sel.name] = selected.textContent;
+		stockCode += selected.value;
+	});
+	
+	const quantity = quantityInput.value;
+	data.stockCode = stockCode;
+	data.quantity = quantity;
+	
+	console.log(data);
+	sendPost("/entry", data);
+	
+});
+
+
+const sendPost = (endpoint, data) => {
+	fetch(endpoint, {
+		method: "POST",
+		headers: {"Content-Type": "application/json"},
+		body: JSON.stringify(data)
+	}).then(res => {
+		console.log(res);
+	});
+};
+</script>
+</body>
+
+</html>
