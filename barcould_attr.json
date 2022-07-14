@@ -1,0 +1,148 @@
+[{
+  "_id": {
+    "$oid": "62bec31cb09be499ea6bd76d"
+  },
+  "key": "sex",
+  "format": "0",
+  "type": "AI",
+  "data": [
+    {
+      "name": "Unisex",
+      "code": "1"
+    },
+    {
+      "name": "Men",
+      "code": "2"
+    },
+    {
+      "name": "Women",
+      "code": "3"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62bec463b09be499ea6bd76e"
+  },
+  "key": "product",
+  "format": "000",
+  "type": "CS",
+  "data": [
+    {
+      "name": "MACRIQ",
+      "code": "MCQ"
+    },
+    {
+      "name": "Prada",
+      "code": "PRD"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62bec475b09be499ea6bd76f"
+  },
+  "key": "model",
+  "format": "000",
+  "type": "AI",
+  "data": [
+    {
+      "name": "Anais",
+      "code": "001"
+    },
+    {
+      "name": "Laura",
+      "code": "002"
+    },
+    {
+      "name": "Lucine",
+      "code": "003"
+    },
+    {
+      "name": "Talyn",
+      "code": "004"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62bec483b09be499ea6bd770"
+  },
+  "key": "season",
+  "format": "0",
+  "type": "AI",
+  "data": [
+    {
+      "name": "Seasonless",
+      "code": "1"
+    },
+    {
+      "name": "Summer",
+      "code": "2"
+    },
+    {
+      "name": "Winter",
+      "code": "3"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62bec496b09be499ea6bd771"
+  },
+  "key": "leather",
+  "format": "00",
+  "type": "AI",
+  "data": [
+    {
+      "name": "Safiano",
+      "code": "01"
+    },
+    {
+      "name": "Toscana",
+      "code": "02"
+    },
+    {
+      "name": "Croco",
+      "code": "03"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62bec4a8b09be499ea6bd772"
+  },
+  "key": "color",
+  "format": "000",
+  "type": "AI",
+  "data": [
+    {
+      "name": "Siyah",
+      "code": "001"
+    },
+    {
+      "name": "Kırmızı",
+      "code": "002"
+    },
+    {
+      "name": "Mavi",
+      "code": "003"
+    }
+  ]
+},{
+  "_id": {
+    "$oid": "62c08a825f07c92f44495651"
+  },
+  "key": "accessory",
+  "format": "00",
+  "type": "CS",
+  "data": [
+    {
+      "name": "Light Gold",
+      "code": "LG"
+    },
+    {
+      "name": "Gold",
+      "code": "GG"
+    },
+    {
+      "name": "Dark Gold",
+      "code": "DG"
+    }
+  ]
+}]

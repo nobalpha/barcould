@@ -1,0 +1,33 @@
+[{
+  "_id": {
+    "$oid": "62c144b63198906a7f2c40cd"
+  },
+  "code": "1MCQ002101001LG",
+  "color": "Siyah",
+  "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAAllBMVEUAAADG1s6qpH6xq4c4TUC5tJPAu508U0VCXE1DZVExRDkyOTRMQDnt7+5GeGz5x7ohMCQmNikoOSs/OCwsPzAtQzEzSzgvQjMnKCsdHiAYGRsySDdGSzMwRTVOUzxMUThTWEEqPC5YXUYwRTQrQC9qb1gZk0UuQjJfZE8kMydlalNFPTEqPC0vQjIxRTQ6UD88U0FFPTDDLVAuAAAAAnRSTlMAvy1NYyUAAAQDSURBVFjDpVYNe5owEEZFkLqtJE2CNsVanKvV2m7//8/tPhIIEpnb3qeFBHNv7pL7ShKH6SwFzKbT2TzL5rNpMkSaJiOYzdM8T+czlEeGyJI8HyOYZ/likWdzkgeGyJLFYowgyxZFschaRJYUxS0EIxqME3gTRs5g3AR/iNOcMP3rQ5ymqEEK8neA2Fr8nQZ3dz1Bd++eoJ07v4gQ9P0C5ODw8nTwdgjk8fvQJNiQBeB3GDBB1jlUS7iAO/C/00aoUZ6yCUvAly/8v1w6EzqXJqeYTJbLyaSdttdK8tm8KL5+u7//9rUo5hkxBNfJApNJUTCBZ2ACtxOqdX+P6rWHyO9WZfaDoQndB7q+bsGCkF5E4jAicSd2H77/3H2IhHX//kOUQsoHgJ9LJbWGh4DvJTz9d2Oq1frxFoIV4XYCacunkMCs1oCVkXUNBFX1LwSPj7cSlKWUSPD0BG8pYGaMJzAGPrnzMISKYExAsEGUz0AgAOVGKZBfgQ3wMEYppY21RiuSt4pQDwi2m2cCDDQBZFc80lZb+NNM8ELoEWwRTcMMTbPVsHS30/CnQH8gQO2l0migrL8TahkQNIh9s2WifQOr5I8fpDzJSKWs9eP6ldAjOBA2jMP+ABaC0G63U/Lt7Q0tRhPYdvXKPC/qkmB/IEUaGMA2dW0DDTRMrJZXTWCCIxMcPQFqECOImHBksCUwGGjAJsjwGu3gGk+njYfXoOoI6CpYA3akngYPFxCCNZAVCoFvSdxTCowO8E/GepQAd+IYqCr0TnJxQfHpGNari3gQiYjmCQ7kLpwTU8UTyvsVAim75yjBOTFXvidG0esPBOYKgWECM0og3s+mJYDD6MU6pBCnv3QEnA9iW3loClwWNgY8QNNXlw94jR0wbMMBOg4qj29cnfhHHC4f+Nh2VJr++sYA6ogGnA/8bI9MHx9gwyeqEKyzCEdQ22QU4P/J7eBwbjU4+NHPi3WhBmNHAtuf/U0qdaZ8AAJajhMcj30CWPAJ8kRA5ig5bkJHdOh2UMNbiPgNh/OvE09OpwfRmWDMGeurQgXE+En6sghvR0AxQASXIR0P/H48Y40Miy0Uw14SGQaDgJTwXwQmiHnAU2nl3xKY/yYw53eBRyElVHoggOamxNbHNQSuPQDhICEE+cUEiRQInksuEqUQrpJwMHrXcHM7SAjw8n2C7xuoIfAEL9eusfHlvSGCTTd/dtXU1Va3vh5osG98XvB9gu8bXDV1tdUT2F5s9eAahYMr+xuSfOWi+nI9pPYHnxd8n+D7hrgJrMGV4+A+wfcNYyZE84HvE3zfEF6jVX/IbCA46BdcQ+Dag152CPzx9Itr++k0KPeuoLv24IZ8ECVYr1x7MBT9DUHXqgQ7Q3TmAAAAAElFTkSuQmCC",
+  "last_printed": "Not printed yet...",
+  "last_registered": "2022-07-03T07:27:53.233Z",
+  "leather": "Safiano",
+  "model": "Laura",
+  "printed": 0,
+  "product": "MACRIQ",
+  "quantity": 8,
+  "season": "Seasonless",
+  "accessory": "Light Gold"
+},{
+  "_id": {
+    "$oid": "62c145023198906a7f2c410b"
+  },
+  "code": "1MCQ001101001LG",
+  "accessory": "Light Gold",
+  "color": "Siyah",
+  "image": "",
+  "last_printed": null,
+  "last_registered": "2022-07-03T07:28:02.407Z",
+  "leather": "Safiano",
+  "model": "Anais",
+  "printed": 0,
+  "product": "MACRIQ",
+  "quantity": 2,
+  "season": "Seasonless"
+}]

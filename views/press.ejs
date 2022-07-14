@@ -98,7 +98,7 @@ span {
 		Array.from(document.querySelectorAll(".printBtn")).forEach((button) => {
 			button.addEventListener("click", (e) => {
 				const body = e.target.closest(".collapsible li");
-				const toBePrinted = Array.from(body.querySelectorAll("span[data-id]")).map((el) =>	({id: el.getAttribute("data-id"), quantity: el.getAttribute("data-quantity") }));
+				const toBePrinted = Array.from(body.querySelectorAll("span[data-id]")).map((el) =>	({id: el.getAttribute("data-id"), quantity: parseInt(el.getAttribute("data-quantity")) }));
 				console.log(toBePrinted);
 				sendPost("/press", toBePrinted);
 				body.remove();
