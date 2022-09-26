@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "canvas": "^2.9.3",
+    "canvas": "^2.10.0",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
     "html-docx-js": "^0.3.1",
