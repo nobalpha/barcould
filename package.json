@@ -5,7 +5,7 @@
     "express": "^4.18.1",
     "html-docx-js": "^0.3.1",
     "html-to-docx": "^1.4.0",
-    "jsdom": "^20.0.0",
+    "jsdom": "^20.0.1",
     "mammoth": "^1.4.21",
     "mongodb": "^4.7.0",
     "officeparser": "^2.3.0",
