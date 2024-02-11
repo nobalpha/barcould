@@ -7,7 +7,7 @@
     "html-to-docx": "^1.4.0",
     "jsdom": "^20.0.0",
     "mammoth": "^1.4.21",
-    "mongodb": "^4.7.0",
+    "mongodb": "^6.0.0",
     "officeparser": "^2.3.0",
     "qr-code-styling": "^1.6.0-rc.1",
     "qr-code-styling-node": "^1.5.0"
