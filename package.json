@@ -2,7 +2,7 @@
   "dependencies": {
     "canvas": "^2.9.3",
     "ejs": "^3.1.8",
-    "express": "^4.18.1",
+    "express": "^4.19.2",
     "html-docx-js": "^0.3.1",
     "html-to-docx": "^1.4.0",
     "jsdom": "^20.0.0",
